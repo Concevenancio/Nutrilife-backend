@@ -16,6 +16,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 app.use(express.json());
 
+
 dotenv.config();
 conectarDB();
 
@@ -33,15 +34,12 @@ const corsOption = {
 }
 
 app.use(cors(corsOption));*/
-
-
 app.use(cors());
 app.use('/api/nutriologos', nutriologoRoutes);
 app.use('/api/pacientes', pacienteRoutes);
 app.use('/api/citas', obtenerCitas);
 app.use('/api/historial-pagos', historialRoutes);
 app.use('/api', express.static(`${__dirname}/storage/imgs`))
-//app.use('/api/pagos', pagosRoutes);
 
 const PORT = process.env.PORT || 4000
 app.listen(PORT, ()=> {
